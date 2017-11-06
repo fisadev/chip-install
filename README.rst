@@ -15,7 +15,7 @@ It usually is ``/dev/ttyACM0``.
 
 .. code-block::
 
-    sudo screen /dev/ttyACM0 115200
+    screen /dev/ttyACM0 115200
 
 
 (usr: chip, pwd: chip)
