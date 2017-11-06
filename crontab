@@ -21,4 +21,4 @@
 # 
 # m h  dom mon dow   command
 */5 * * * * /home/chip/update_chisa_fisadev_com >> /home/chip/update_chisa_fisadev_com.log 2>&1
-0 * * * * /home/chip/backup_gmail >> /home/chip/backup_gmail.log 2>&1
+30 * * * * /home/chip/backup_gmail >> /home/chip/backup_gmail.log 2>&1
