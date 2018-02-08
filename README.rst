@@ -72,7 +72,7 @@ Copy ssh key from my local machine, and files needed on the chisa:
 
 .. code-block::
 
-    ssh-copy-id chip@chisa.local -i /home/fisa/.ssh/chisa_rsa -f
+    ssh-copy-id -o PubkeyAuthentication=no chip@chisa.local -i /home/fisa/.ssh/chisa_rsa -f
     scp /home/fisa/devel/mios/scripts/update_chisa_fisadev_com chisa:/home/chip/update_chisa_fisadev_com
     scp /home/fisa/devel/mios/scripts/backup_gmail chisa:/home/chip/backup_gmail
     scp /home/fisa/devel/mios/dotfiles/.mbsyncrc chisa:/home/chip/.mbsyncrc
