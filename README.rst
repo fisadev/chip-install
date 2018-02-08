@@ -83,8 +83,8 @@ Update index and install packages:
 
 .. code-block::
 
-    sudo apt-get update
-    sudo apt-get install rsync nocache git isync
+    sudo apt update
+    sudo apt install rsync nocache git isync
     git clone https://github.com/dustinkirkland/run-one.git /home/chip/run-one
     sudo ln -s /home/chip/run-one/run-one /usr/bin/run-one
 
