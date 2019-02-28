@@ -1,21 +1,32 @@
 -1 Flashing latest version
 --------------------------
 
-Just go to http://flash.getchip.com/ and follow the wizard. You will need a 
-paperclip.
+Connect the FEL and a GROUND pin of the C.H.I.P (for example, with a paperclip).
+Connect the C.H.I.P its micro USB port to a USB port of your Linux machine.
+
+In the Linux machine:
+   Clone https://github.com/Thore-Krug/Flash-CHIP.git to clone this repository.
+   cd into the location where you stored this repository.
+   run sudo chmod +x Flash.sh
+   run ./Flash.sh
+   Select the version you want to install.
+   Wait until the installation finishes.
+   Enjoy!
+
 
 0 First boot
 ------------
 
 Connect the chip (with no paperclip bridge), wait for the heartbeat (led), and 
 then find out which tty it is.
-Could be helpfull to list ``/dev/tty*`` before and after connection, to compare the 
-lists. 
+Could be helpfull to run ``ls /dev/tty* | sort`` before and after connection, to 
+compare the lists. 
+
 It usually is ``/dev/ttyACM0``.
 
 .. code-block::
 
-    screen /dev/ttyACM0 115200
+    sudo screen /dev/ttyACM0 115200
 
 
 (usr: chip, pwd: chip)
@@ -68,7 +79,7 @@ And restart avahi:
     sudo /etc/init.d/avahi-daemon restart
 
 
-Copy ssh key from my local machine, and files needed on the chisa:
+Copy ssh key from my **local machine**, and files needed on the chisa:
 
 .. code-block::
 
@@ -89,6 +100,14 @@ Update index and install packages:
     sudo ln -s /home/chip/run-one/run-one /usr/bin/run-one
 
 
+If you have trouble getting apt to work due to a lack of https transport, an ugly hack that makes it 
+work is to create a symbolic link from the http transport to the https one:
+
+``sudo ln -s /usr/lib/apt/transport/http /usr/lib/apt/transport/https``
+
+Super ugly, but found no other way of solving this.
+
+
 Install crontab:
 
 .. code-block::
@@ -103,3 +122,5 @@ Configure automatic mounting of tero:
     sudo mkdir -p /media/tero
     sudo chmod 544 /media/tero
     echo "/dev/sda1 /media/tero    ext4    defaults 0   0" | sudo tee -a /etc/fstab
+
+Reboot with the disk connected.
